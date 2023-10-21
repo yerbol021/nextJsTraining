@@ -6,19 +6,28 @@
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script type="text/jsx">
-      const app = document.getElementById("app")
+    <script type="text/babel">
+      const app = document.getElementById("app");
 
-      function Header() {
-        return <h1>Develop. Preview. Ship. 🚀</h1>;
+      function createTitle(title) {
+        if (title) {
+          return title;
+        } else {
+          return "Default title";
+        }
+      }
+
+      function Header({ title }) {
+        console.log(title);
+        return <h1>{createTitle(title)}</h1>;
       }
 
       function HomePage() {
         return (
           <div>
-            <Header />
-            </div>;
-        )
+            <Header title="react!" />
+          </div>
+        );
       }
 
       ReactDOM.render(<HomePage />, app);
